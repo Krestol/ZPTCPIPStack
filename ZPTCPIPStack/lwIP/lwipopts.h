@@ -42,7 +42,7 @@
 #define LWIP_EVENT_API          0
 #define LWIP_CALLBACK_API       1
 #define TCP_SND_QUEUELEN        1000
-#define TCP_OUTPUT_DEBUG        1
+//#define TCP_OUTPUT_DEBUG        LWIP_DBG_LEVEL_SERIOUS
 //  LOOPIF options
 #define LWIP_NETIF_LOOPBACK     0
 
