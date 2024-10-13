@@ -42,7 +42,7 @@ err_t netif_output_ip4(struct netif *netif, struct pbuf *p, const ip4_addr_t *ip
     return netif_output(p, TRUE);
 }
 
-err_t netif_output_ip6(struct netif *netif, struct pbuf *p, const ip6_addr_t *ipaddr)
+err_t netif_output_ip6(struct netif *netif, struct pbuf *p, const void *ipaddr)
 {
     return netif_output(p, FALSE);
 }
@@ -194,17 +194,17 @@ tcp_input_pre(struct pbuf *p, struct netif *inp)
     int addr_str_len = ip_current_is_v6() ? INET6_ADDRSTRLEN : INET_ADDRSTRLEN;
     char src_addr_chars[addr_str_len];
     char dest_addr_chars[addr_str_len];
-    if (ip_current_is_v6()) {
-        LWIP_ASSERT("error in ip6 ntop",
-                    inet_ntop(AF_INET6, ip6_current_src_addr(), src_addr_chars, addr_str_len) != NULL);
-        LWIP_ASSERT("error in ip6 ntop",
-                    inet_ntop(AF_INET6, ip6_current_dest_addr(), dest_addr_chars, addr_str_len) != NULL);
-    } else {
+//    if (ip_current_is_v6()) {
+//        LWIP_ASSERT("error in ip6 ntop",
+//                    inet_ntop(AF_INET6, ip6_current_src_addr(), src_addr_chars, addr_str_len) != NULL);
+//        LWIP_ASSERT("error in ip6 ntop",
+//                    inet_ntop(AF_INET6, ip6_current_dest_addr(), dest_addr_chars, addr_str_len) != NULL);
+//    } else {
         LWIP_ASSERT("error in ip4 ntop",
                     inet_ntop(AF_INET, ip4_current_src_addr(), src_addr_chars, addr_str_len) != NULL);
         LWIP_ASSERT("error in ip4 ntop",
                     inet_ntop(AF_INET, ip4_current_dest_addr(), dest_addr_chars, addr_str_len) != NULL);
-    }
+   // }
     NSString *src_addr_str = [NSString stringWithCString:src_addr_chars
                                                 encoding:NSASCIIStringEncoding];
     NSString *dest_addr_str = [NSString stringWithCString:dest_addr_chars
@@ -311,11 +311,11 @@ tcp_input_pre(struct pbuf *p, struct netif *inp)
     NSAssert(p != NULL, @"error in pbuf_alloc");
     NSAssert(pbuf_take(p, data.bytes, data.length) == ERR_OK, @"error in pbuf_take");
     
-    if (IP_HDR_GET_VERSION(p->payload) == 6) {
-        return ip6_input(p, &_netif);
-    } else {
+//    if (IP_HDR_GET_VERSION(p->payload) == 6) {
+//        return ip6_input(p, &_netif);
+//    } else {
         return ip4_input(p, &_netif);
-    }
+   // }
 }
 
 // MARK: - Misc

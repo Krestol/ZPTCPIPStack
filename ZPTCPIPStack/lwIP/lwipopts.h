@@ -25,6 +25,7 @@
 
 //  ICMP options
 #define LWIP_ICMP               0
+#define LWIP_ICMP               0
 
 //  UDP options
 #define LWIP_UDP                0
@@ -55,7 +56,7 @@
 #define LWIP_STATS              0
 
 //  IPv6 options
-#define LWIP_IPV6               1
+//#define LWIP_IPV6               1
 
 //  PPP options
 #define PPP_SUPPORT             0
@@ -66,5 +67,8 @@
 //  Debug
 //#define LWIP_DEBUG              LWIP_DBG_ON
 //#define IP_DEBUG                LWIP_DBG_ON
+
+//#define PACK_STRUCT_USE_INCLUDES
+
 
 #endif /* LWIP_CUSTOM_LWIPOPTS_H */
