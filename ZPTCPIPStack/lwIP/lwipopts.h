@@ -41,6 +41,7 @@
 #define TCP_SND_BUF             (TCP_WND)
 #define LWIP_EVENT_API          0
 #define LWIP_CALLBACK_API       1
+#define TCP_SND_QUEUELEN        20
 
 //  LOOPIF options
 #define LWIP_NETIF_LOOPBACK     0
